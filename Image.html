@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery</title>
+  
+  <link rel="stylesheet" href="Style.css">
+ 
+</head>
+<body>
+  <div class="gallery">
+    <img src="./Dipta 04.jpg" alt="Photo 1">
+    <img src="./Dipta 02.jpg" alt="Photo 2">
+    <img src="./Dipta 07.jpg" alt="Photo 3">
+    <img src="./Dipta 08.jpg" alt="Photo 4">
+    <img src="./Dipta 06.png" alt="Photo 5">
+    <img src="./Dipta 01.jpg" alt="Photo 6">
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <span class="close" id="close">&times;</span>
+    <img src="" alt="Lightbox Image" id="lightbox-img">
+  </div>
+
+  <script>
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('close');
+
+    galleryImages.forEach(image => {
+      image.addEventListener('click', () => {
+        lightboxImg.src = image.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target !== lightboxImg) {
+        lightbox.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
